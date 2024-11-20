@@ -10,6 +10,7 @@ export default function Home() {
   });
 
   const [success, setSuccess] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false); // For popup form visibility
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +18,8 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const webhookUrl = "https://discord.com/api/webhooks/1307061556567212163/rZ5IItXmyUXUYqHYL4NITLED3eaIqtyiInycHjtTzaME6yFTu8fV-X4mpZZJnrBgHFvZ"; // Replace with your webhook URL
+    const webhookUrl =
+      "https://discord.com/api/webhooks/1307061556567212163/rZ5IItXmyUXUYqHYL4NITLED3eaIqtyiInycHjtTzaME6yFTu8fV-X4mpZZJnrBgHFvZ"; // Replace with your webhook URL
     try {
       await axios.post(webhookUrl, {
         content: `**Whitelist Application Received**\nName: ${formData.name}\nExperience: ${formData.experience}\nReason: ${formData.reason}`,
@@ -26,6 +28,10 @@ export default function Home() {
     } catch (error) {
       console.error("Error sending form data to Discord:", error);
     }
+  };
+
+  const toggleForm = () => {
+    setIsFormVisible(!isFormVisible);
   };
 
   return (
@@ -62,45 +68,61 @@ export default function Home() {
         </a>
       </section>
 
-      {/* Whitelist Form Section */}
-      <section className={styles.whitelist}>
-        <h2>Whitelist Application</h2>
-        {success ? (
-          <p className={styles.successMessage}>Thank you for your application! We will review it soon.</p>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <label>
-              Name:
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-            <label>
-              Roleplay Experience:
-              <textarea
-                name="experience"
-                value={formData.experience}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-            <label>
-              Why do you want to join?
-              <textarea
-                name="reason"
-                value={formData.reason}
-                onChange={handleInputChange}
-                required
-              />
-            </label>
-            <button type="submit">Submit Application</button>
-          </form>
-        )}
+      {/* Whitelist Form Button */}
+      <section className={styles.whitelistButtonSection}>
+        <button className={styles.openWhitelistButton} onClick={toggleForm}>
+          Apply for Whitelist
+        </button>
       </section>
+
+      {/* Whitelist Form Popup */}
+      {isFormVisible && (
+        <div className={styles.popup}>
+          <div className={styles.popupContent}>
+            <button className={styles.closeButton} onClick={toggleForm}>
+              &times;
+            </button>
+            <h2>Whitelist Application</h2>
+            {success ? (
+              <p className={styles.successMessage}>
+                Thank you for your application! We will review it soon.
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <label>
+                  Name:
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </label>
+                <label>
+                  Roleplay Experience:
+                  <textarea
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </label>
+                <label>
+                  Why do you want to join?
+                  <textarea
+                    name="reason"
+                    value={formData.reason}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </label>
+                <button type="submit">Submit Application</button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Footer Section */}
       <footer className={styles.footer}>

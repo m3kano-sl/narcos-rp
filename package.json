@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Welcome to the official website of **Narcos RolePlay**! This project is a single-page application (SPA) showcasing the server's information, trailers, and whitelist application.",
   "main": "index.js",
-"scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start"
-}
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

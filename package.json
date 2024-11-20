@@ -4,7 +4,9 @@
   "description": "Welcome to the official website of **Narcos RolePlay**! This project is a single-page application (SPA) showcasing the server's information, trailers, and whitelist application.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "keywords": [],
   "author": "",

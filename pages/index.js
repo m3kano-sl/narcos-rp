@@ -10,7 +10,7 @@ export default function Home() {
   });
 
   const [success, setSuccess] = useState(false);
-  const [isFormVisible, setIsFormVisible] = useState(false); // For popup form visibility
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,8 +18,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const webhookUrl =
-      "https://discord.com/api/webhooks/1307061556567212163/rZ5IItXmyUXUYqHYL4NITLED3eaIqtyiInycHjtTzaME6yFTu8fV-X4mpZZJnrBgHFvZ"; // Replace with your webhook URL
+    const webhookUrl = "https://discord.com/api/webhooks/your_webhook_url"; // Replace with your webhook URL
     try {
       await axios.post(webhookUrl, {
         content: `**Whitelist Application Received**\nName: ${formData.name}\nExperience: ${formData.experience}\nReason: ${formData.reason}`,
@@ -30,20 +29,30 @@ export default function Home() {
     }
   };
 
-  const toggleForm = () => {
-    setIsFormVisible(!isFormVisible);
-  };
-
   return (
     <div className={styles.container}>
-      {/* Header Section */}
+      {/* Navigation Bar */}
+      <nav className={styles.navbar}>
+        <div className={styles.logoContainer}>
+          <img src="/NARCOS_png.png" alt="Narcos Logo" className={styles.logo} />
+          <span className={styles.navTitle}>Narcos RolePlay</span>
+        </div>
+        <ul className={styles.navLinks}>
+          <li><a href="#trailer">Trailer</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#whitelist">Whitelist</a></li>
+          <li><a href="https://discord.com" target="_blank">Discord</a></li>
+        </ul>
+      </nav>
+
+      {/* Hero Section */}
       <header className={styles.header}>
-        <img src="/NARCOS_png.png" alt="Narcos RolePlay" className={styles.logo} />
-        <h1>Narcos RolePlay</h1>
+        <h1>Welcome to Narcos RolePlay</h1>
+        <p>Your immersive roleplay experience awaits.</p>
       </header>
 
       {/* Trailer Section */}
-      <section className={styles.trailer}>
+      <section id="trailer" className={styles.trailer}>
         <h2>Watch the Trailer</h2>
         <iframe
           width="560"
@@ -57,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className={styles.about}>
+      <section id="about" className={styles.about}>
         <h2>About Our Server</h2>
         <p>
           Welcome to Narcos RolePlay, where immersive roleplaying meets a rich and dynamic
@@ -68,25 +77,24 @@ export default function Home() {
         </a>
       </section>
 
-      {/* Whitelist Form Button */}
-      <section className={styles.whitelistButtonSection}>
-        <button className={styles.openWhitelistButton} onClick={toggleForm}>
+      {/* Whitelist Application Section */}
+      <section id="whitelist" className={styles.whitelist}>
+        <h2>Whitelist Application</h2>
+        <button className={styles.openWhitelistButton} onClick={() => setShowPopup(true)}>
           Apply for Whitelist
         </button>
       </section>
 
-      {/* Whitelist Form Popup */}
-      {isFormVisible && (
+      {/* Popup Form */}
+      {showPopup && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>
-            <button className={styles.closeButton} onClick={toggleForm}>
+            <button className={styles.closeButton} onClick={() => setShowPopup(false)}>
               &times;
             </button>
             <h2>Whitelist Application</h2>
             {success ? (
-              <p className={styles.successMessage}>
-                Thank you for your application! We will review it soon.
-              </p>
+              <p className={styles.successMessage}>Thank you for your application! We will review it soon.</p>
             ) : (
               <form onSubmit={handleSubmit}>
                 <label>
@@ -126,7 +134,7 @@ export default function Home() {
 
       {/* Footer Section */}
       <footer className={styles.footer}>
-        <p>&copy; 2024 Narcos RolePlay</p>
+        <p>&copy; 2024 Narcos RolePlay. All Rights Reserved.</p>
       </footer>
     </div>
   );

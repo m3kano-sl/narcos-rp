@@ -18,60 +18,127 @@
   z-index: -1;
 }
 
-/* Neon Glow Effect */
-h1, h2, h3 {
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-}
-
 /* Header Section */
 .header {
   padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .logo {
   max-width: 120px;
 }
 
+h1 {
+  font-size: 2.5rem;
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
 /* Trailer Section */
+.trailer {
+  margin: 40px 0;
+}
+
+.trailer h2 {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  margin-bottom: 20px;
+}
+
 .trailer iframe {
   border: 5px solid #00ffff;
   border-radius: 10px;
+  max-width: 100%;
 }
 
 /* About Section */
+.about {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+  text-align: center;
+}
+
 .about p {
-  max-width: 600px;
-  margin: 10px auto;
+  line-height: 1.8;
+}
+
+.discordButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.discordButton:hover {
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
 }
 
 /* Stats Section */
+.stats {
+  margin: 40px 0;
+}
+
 .statsCards {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .statCard {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   padding: 15px;
   border-radius: 10px;
   border: 2px solid #00ffff;
+  text-align: center;
+  width: 200px;
+}
+
+.statCard h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
 /* Features Section */
+.features {
+  margin: 40px 0;
+}
+
 .featureCards {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .featureCard {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   padding: 20px;
   border-radius: 10px;
   border: 2px solid #00ffff;
   transition: transform 0.3s;
+  text-align: center;
+  width: 250px;
+}
+
+.featureCard h3 {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
 .featureCard:hover {
@@ -79,11 +146,27 @@ h1, h2, h3 {
 }
 
 /* Whitelist Section */
-.whitelist form input,
-.whitelist form textarea {
+.whitelist {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.whitelist label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.whitelist input,
+.whitelist textarea {
   width: 100%;
   max-width: 400px;
-  margin: 10px 0;
+  margin: 10px auto;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -91,8 +174,31 @@ h1, h2, h3 {
   color: #fff;
 }
 
-/* Footer */
+.whitelist button {
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.whitelist button:hover {
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+}
+
+.successMessage {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+/* Footer Section */
 .footer {
   padding: 20px;
   background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  color: #fff;
 }
+

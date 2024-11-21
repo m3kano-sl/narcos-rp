@@ -59,12 +59,12 @@ export default function Home() {
           alt="Narcos RolePlay"
           className={styles.logo}
         />
-        <h1>Narcos RolePlay</h1>
+        <h1 className={styles.headerTitle}>Narcos RolePlay</h1>
       </header>
 
       {/* Trailer Section */}
       <section className={styles.trailer}>
-        <h2>Watch the Trailer</h2>
+        <h2 className={styles.trailerTitle}>Watch the Trailer</h2>
         <iframe
           width="560"
           height="315"
@@ -79,7 +79,7 @@ export default function Home() {
       {/* About Section */}
       <section className={styles.about}>
         <h2>About Our Server</h2>
-        <p>
+        <p className={styles.aboutText}>
           Welcome to Narcos RolePlay, where immersive roleplaying meets a rich
           and dynamic community. Join us on Discord to learn more and connect!
         </p>
@@ -87,6 +87,7 @@ export default function Home() {
           href="https://discord.com"
           target="_blank"
           className={styles.discordButton}
+          rel="noreferrer"
         >
           Join Our Discord
         </a>
@@ -97,11 +98,11 @@ export default function Home() {
         <h2>Live Server Stats</h2>
         <div className={styles.statsCards}>
           <div className={styles.statCard}>
-            <h3>Players Online</h3>
+            <h3 className={styles.statCardTitle}>Players Online</h3>
             <p>{serverStats.players}</p>
           </div>
           <div className={styles.statCard}>
-            <h3>Uptime</h3>
+            <h3 className={styles.statCardTitle}>Uptime</h3>
             <p>{serverStats.uptime}</p>
           </div>
         </div>
@@ -112,15 +113,15 @@ export default function Home() {
         <h2>Server Features</h2>
         <div className={styles.featureCards}>
           <div className={styles.featureCard}>
-            <h3>Custom Vehicles</h3>
+            <h3 className={styles.featureCardTitle}>Custom Vehicles</h3>
             <p>Unique vehicles that elevate your roleplay experience.</p>
           </div>
           <div className={styles.featureCard}>
-            <h3>Dynamic Economy</h3>
+            <h3 className={styles.featureCardTitle}>Dynamic Economy</h3>
             <p>A balanced economy with jobs, businesses, and more!</p>
           </div>
           <div className={styles.featureCard}>
-            <h3>Active Community</h3>
+            <h3 className={styles.featureCardTitle}>Active Community</h3>
             <p>Engage with a vibrant and welcoming player base.</p>
           </div>
         </div>
@@ -175,3 +176,4 @@ export default function Home() {
     </div>
   );
 }
+
